@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <style>
+     .slider{
+            width: 86%;
+            height: 520px;
+            margin: 50px auto;
+            position: relative;
+            box-shadow: 0px 0px 10px 3px grey;
+            overflow: hidden;
+            border: 5px solid #3949ab;
+        }
+       .slider figure{
+        margin: 0;
+        position: relative;
+        width: 500%;
+        left: 0px;
+        transition: 1s ease-in-out;
+       } 
+       .slider figure img{
+        width: 20%;
+        height: 100%;
+        float: left;
+       }
+       /*style button*/
+       .btn-prev, .btn-next{
+        position: absolute;
+        top: 45%;
+        cursor: pointer;
+        color: white;
+        background: #3949ab;
+        padding: 20px;
+        font-size: 50px;
+        border: none;
+       }
+       .btn-next{
+        right: 0px;
+       }
+       .btn-prev{
+        left: 0px;
+       }
+        </style>
+</head>
+<body>
+    <div class="slider">
+    <figure>
+        <img src="./a.jpeg" alt="">
+        <img src="./b.jpeg" alt="">
+        <img src="./c.jpeg" alt="">
+        <img src="./d.jpeg" alt="">
+        <img src="./e.jpeg" alt="">
+    </figure>
+
+    <!--btton-->
+    <button class="btn-prev"><i class="fa fa-arrow-circle-left"></i></button>
+    <button class="btn-next"><i class="fa fa-arrow-circle-right"></i></button>
+</div>
+<!--Add Jquery Script-->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+    x=0;
+    //for next slide
+    $(".btn-next").click(function(){
+        x = (x<=300)?(x+100):0;
+        $("figure").css("left",-x+"%");
+    });
+    //for prev slide
+    $(".btn-prev").click(function(){
+        x = (x>=100)?(x-100):400;
+        $("figure").css("left",-x+"%");
+    });
+     
+
+    });
+</script>
+</body>
+</html>
